@@ -90,7 +90,7 @@ public class Utils {
 	public static String recuperarUsuario(String email) throws Exception
 	{
 		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost httppost = new HttpPost("http://www.iagodiaz.com/ASOFUSA/recuperar_usuario.php");
+		HttpPost httppost = new HttpPost(Data.getUserUrl);
 
 		String webSource = "";
 		String inputLine;

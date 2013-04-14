@@ -17,7 +17,6 @@ public class WebLoader
 {	
 	public static String load(String url) throws Exception
 	{
-		String inputLine;
 		String pageSource = "";
 		HttpParams httpParams = new BasicHttpParams();
 		HttpProtocolParams.setContentCharset(httpParams, "utf-8");
@@ -34,9 +33,20 @@ public class WebLoader
 			inputStream = response.getEntity().getContent();
 			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
 
+			StringBuilder builder = new StringBuilder();
+			String aux = "";
+
+			while ((aux = bufferedReader.readLine()) != null) {
+			    builder.append(aux);
+			}
+
+			pageSource = builder.toString();
+			
+			//Esto es lentiiiiiiiiiiisimo
+			/*String inputLine;
 			while ((inputLine = bufferedReader.readLine()) != null) {
 				pageSource += inputLine;
-			}
+			}*/
 
 			bufferedReader.close();
 		} catch (Exception e) {

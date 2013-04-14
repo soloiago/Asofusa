@@ -25,7 +25,7 @@ public class PageSourceParser {
 	private static final String patternCalendario = "<table class=\"CSSTableGenerator\" style=\"width: 100%\">";
 	private static final String patternCalendarioEnd = "<a href=\"javascript:history.back(1)\">";
 	
-	private static final String patternListaCompeticiones= "<a href=competiciones?";
+	private static final String patternListaCompeticiones= "<ul class=\"desplegablecompeticion\">";
 	private static final String patternListaCompeticiones2= "competicion=";
 	
 	
@@ -124,14 +124,15 @@ public class PageSourceParser {
 		List<String[]> listaCompeticiones = new ArrayList<String[]>();
 		
 		int coincidencia = cadena.indexOf(patternListaCompeticiones);
-		
-		while (coincidencia != -1) {
-			coincidencia = cadena.indexOf(patternListaCompeticiones2, coincidencia + patternListaCompeticiones.length());
+		int end = cadena.indexOf("</ul>", coincidencia);
+
+		coincidencia = cadena.indexOf(patternListaCompeticiones2, coincidencia + patternListaCompeticiones2.length());
+		while (coincidencia != -1 && coincidencia < end) {
 			int end1 = cadena.indexOf(">", coincidencia);
 			int end2 = cadena.indexOf("<", end1);
 			
-			listaCompeticiones.add(new String[] {cadena.substring(coincidencia, end1), cadena.substring(end1 + 1, end2)});
-			coincidencia = cadena.indexOf(patternListaCompeticiones, end2);
+			listaCompeticiones.add(new String[] {cadena.substring(coincidencia, end1 - 1), cadena.substring(end1 + 1, end2).trim()});
+			coincidencia = cadena.indexOf(patternListaCompeticiones2, end2);
 		}
 		
 		return listaCompeticiones;

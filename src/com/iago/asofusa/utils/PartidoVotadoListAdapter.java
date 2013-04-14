@@ -20,7 +20,6 @@ public class PartidoVotadoListAdapter extends ArrayAdapter<Partido>{
 	List<Partido> fitems;
 	int textViewResourceId;
 
-
 	public PartidoVotadoListAdapter(Context context, int textViewResourceId, List<Partido> partidos) {
 		super(context, textViewResourceId, partidos);
 		this.context = context;

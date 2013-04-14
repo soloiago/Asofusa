@@ -26,7 +26,7 @@ public class DbHandler {
 	public static final String DATABASE_EQUIPOS_TABLE = "EQUIPOS_TABLE";
 	public static final String DATABASE_CALENDARIO_TABLE = "CALENDARIO_TABLE";
 	public static final String DATABASE_COMPETICIONES_TABLE = "COMPETICIONES_TABLE";
-	private static final int DATABASE_VERSION = 4;
+	private static final int DATABASE_VERSION = 5;
 
 	public static final String KEY_LIGA = "liga";
 	public static final String KEY_CALIFICACION = "calificacion";

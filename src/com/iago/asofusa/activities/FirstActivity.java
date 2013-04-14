@@ -220,22 +220,6 @@ public class FirstActivity extends SherlockActivity {
 			}
 		});
 		
-		findViewById(R.id.buttonPorra).setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (userName.equals("")) {
-					Intent intent = new Intent(ctx, ConfigUserActivity.class);
-					startActivityForResult(intent, 1);
-				} else {
-					Intent intent = new Intent(ctx, PoolMainActivity.class);
-					setPreference(preferenceSpinner);
-					intent.putExtra("currentLiga", currentLiga);
-					startActivity(intent);
-				}
-			}
-		});
-		
 		findViewById(R.id.buttonConfigUser).setOnClickListener(new OnClickListener() {
 
 			@Override
